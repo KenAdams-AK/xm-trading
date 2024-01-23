@@ -1,0 +1,21 @@
+@import "../../scss/shared";
+
+.button {
+  font-family: $font-bebas-neue;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  width: 18.125rem;
+  height: 2.5rem;
+  background-color: #29a643;
+
+  &[disabled] {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+}
+
+@media (min-width: 768px) {
+  .button {
+    width: 21.625rem;
+  }
+}

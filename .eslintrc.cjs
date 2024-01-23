@@ -47,6 +47,9 @@ module.exports = {
     "no-shadow": ["off"],
     "import/extensions": ["warn"],
     "no-param-reassign": ["error", { props: false }],
+    "react/jsx-props-no-spreading": ["off"],
+    "react/require-default-props": ["off"],
+    "react/button-has-type": ["off"],
   },
 };
 
