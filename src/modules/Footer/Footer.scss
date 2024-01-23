@@ -1,0 +1,76 @@
+.footer {
+  background-color: #000;
+
+  &__trade-icon {
+    width: 11.375rem;
+    height: 3.625rem;
+  }
+
+  &__desktop,
+  hr {
+    display: none;
+  }
+
+  &__mobile {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    gap: 1.5rem;
+    padding-block: 3.875rem;
+  }
+
+  .navbar {
+    font-size: 0.75rem;
+    color: #888;
+
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      place-items: center;
+      gap: 0.3125rem;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .footer {
+    &__mobile {
+      flex-direction: row;
+      justify-content: space-between;
+      padding-block: 3.25rem;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer {
+    &__desktop {
+      display: flex;
+      place-items: center;
+      justify-content: space-between;
+      padding-top: 3.25rem;
+      padding-bottom: 2rem;
+    }
+
+    &__brands {
+      display: flex;
+      place-items: center;
+      gap: 3.625rem;
+    }
+
+    &__social-icons {
+      color: #888;
+      font-size: 0.75rem;
+      display: flex;
+      place-items: center;
+      gap: 0.875rem;
+    }
+
+    hr {
+      display: block;
+      border: 0;
+      height: 1px;
+      background-color: #444;
+    }
+  }
+}

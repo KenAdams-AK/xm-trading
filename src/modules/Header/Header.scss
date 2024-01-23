@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  padding-block: 1.375rem;
+  background-color: #000;
+
+  &__logo {
+    width: 8.75rem;
+    height: 3rem;
+  }
+
+  &__navbar {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header {
+    justify-content: space-between;
+    padding-block: 2rem;
+  }
+
+  .navbar {
+    display: block;
+
+    &__list {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .active {
+      color: red;
+    }
+  }
+}
