@@ -18,7 +18,8 @@ function CryptoCard({
   price = "$87,193.00",
   change = "12.95%",
   icon = ICONS[name],
-}: Props) {
+}: Partial<Props>) {
+  // TODO: remove Partial<Props>
   return (
     <div className="crypto-card">
       <div className="crypto-card__head">
