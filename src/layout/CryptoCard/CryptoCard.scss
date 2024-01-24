@@ -1,3 +1,5 @@
+@import "../../scss/shared";
+
 .crypto-card {
   min-width: 14.75rem;
   line-height: 120%; /* 14.639px */
@@ -64,11 +66,8 @@
   }
 }
 
-@media (min-width: 768px) {
+@include media-tablet {
   .crypto-card {
     min-width: 13rem;
   }
-}
-
-@media (min-width: 1024px) {
 }

@@ -26,7 +26,7 @@ body {
   }
 }
 
-@media (min-width: 768px) {
+@include media-tablet {
   #root {
     header,
     main,

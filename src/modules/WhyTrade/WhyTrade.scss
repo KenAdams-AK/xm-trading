@@ -1,0 +1,48 @@
+@import "../../scss/shared";
+
+.why-trade {
+  padding-block: 4.375rem;
+
+  &__title {
+    @include title(2rem, 300, 2.625rem);
+    padding-inline: 2.375rem;
+    span {
+      font-weight: 700;
+    }
+  }
+
+  .hr {
+    display: block;
+    border: 0;
+    height: 0.125rem;
+    background: #29a643;
+  }
+
+  &__hr {
+    width: 4.375rem;
+    margin-inline: auto;
+    margin-block: 1.5rem;
+  }
+
+  &__text {
+    @include text(1.25rem);
+    max-width: 40.5rem;
+    padding-inline: 0.125rem;
+    margin-inline: auto;
+    margin-bottom: 3.75rem;
+    span {
+      font-weight: 700;
+    }
+  }
+}
+
+@include media-desktop {
+  .why-trade {
+    padding-top: 5.625rem;
+    padding-bottom: 5rem;
+
+    &__text {
+      margin-bottom: 2rem;
+    }
+  }
+}

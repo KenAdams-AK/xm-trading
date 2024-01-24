@@ -1,3 +1,5 @@
+@import "../../scss/shared";
+
 .footer {
   background-color: #000;
 
@@ -32,7 +34,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@include media-tablet {
   .footer {
     &__mobile {
       flex-direction: row;
@@ -42,7 +44,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@include media-desktop {
   .footer {
     &__desktop {
       display: flex;

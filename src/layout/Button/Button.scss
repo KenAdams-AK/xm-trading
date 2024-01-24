@@ -14,7 +14,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@include media-tablet {
   .button {
     width: 21.625rem;
   }
