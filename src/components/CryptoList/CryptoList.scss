@@ -1,0 +1,13 @@
+.crypto-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2.125rem;
+}
+
+@media (min-width: 768px) {
+  .crypto-list {
+    gap: 1.125rem;
+  }
+}
