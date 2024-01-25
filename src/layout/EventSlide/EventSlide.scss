@@ -1,0 +1,23 @@
+@import "../../scss/shared";
+
+.event-slide {
+  width: 6.25rem;
+  height: 6.25rem;
+  background-color: #dadada;
+  border: 3px solid #fff;
+  outline: 1px solid #cdcdcd;
+}
+
+@include media-tablet {
+  .event-slide {
+    width: 8.125rem;
+    height: 8.125rem;
+  }
+}
+
+@include media-desktop {
+  .event-slide {
+    width: 10.25rem;
+    height: 10.25rem;
+  }
+}

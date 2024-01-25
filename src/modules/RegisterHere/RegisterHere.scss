@@ -1,6 +1,7 @@
 @import "../../scss/shared";
 
 .register-here {
+  @include padpadding-inline;
   margin-bottom: 4.625rem;
 
   &__title {

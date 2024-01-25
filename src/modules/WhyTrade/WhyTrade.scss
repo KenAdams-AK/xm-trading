@@ -1,6 +1,7 @@
 @import "../../scss/shared";
 
 .why-trade {
+  @include padpadding-inline;
   padding-block: 4.375rem;
 
   &__title {

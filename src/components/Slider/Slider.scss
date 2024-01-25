@@ -1,0 +1,35 @@
+@import "../../scss/shared";
+
+.slider {
+  display: flex;
+  gap: 1rem;
+
+  &__btn {
+    font-size: 1.875rem;
+    color: #959595;
+  }
+
+  &__list {
+    display: flex;
+    gap: 1.5rem;
+    overflow: hidden;
+  }
+}
+
+@include media-tablet {
+  .slider {
+    gap: 2rem;
+    &__list {
+      gap: 1.875rem;
+    }
+  }
+}
+
+@include media-desktop {
+  .slider {
+    gap: 4.375rem;
+    &__list {
+      gap: 2.25rem;
+    }
+  }
+}

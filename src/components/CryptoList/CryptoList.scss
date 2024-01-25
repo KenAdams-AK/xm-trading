@@ -1,6 +1,7 @@
 @import "../../scss/shared";
 
 .crypto-list {
+  @include padpadding-inline;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

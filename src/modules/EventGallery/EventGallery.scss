@@ -1,0 +1,27 @@
+@import "../../scss/shared";
+
+.event-gallery {
+  @include padpadding-inline;
+  padding-block: 3.375rem;
+  background-color: #f4f4f4;
+
+  &__title {
+    @include title(1.875rem, 800, 130%);
+    color: #252525;
+    margin-bottom: 2.5rem;
+  }
+}
+
+@include media-tablet {
+  .event-gallery {
+    padding-block: 4.5rem;
+  }
+}
+
+@include media-desktop {
+  .event-gallery {
+    &__title {
+      margin-bottom: 3.125rem;
+    }
+  }
+}
