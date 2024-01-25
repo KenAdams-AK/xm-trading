@@ -1,5 +1,6 @@
 import CryptoList from "../../components/CryptoList/CryptoList";
 import Hero from "../../modules/Hero/Hero";
+import RegisterHere from "../../modules/RegisterHere/RegisterHere";
 import WhyTrade from "../../modules/WhyTrade/WhyTrade";
 
 function HomePage() {
@@ -8,6 +9,7 @@ function HomePage() {
       <Hero />
       <CryptoList />
       <WhyTrade />
+      <RegisterHere />
     </>
   );
 }

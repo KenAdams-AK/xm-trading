@@ -14,7 +14,6 @@ $screen-desktop: 1024px;
 
 @mixin text($line-height: 1.25rem) {
   font-family: $font-roboto;
-  font-size: 0.875rem;
   text-align: center;
   font-weight: 400;
   line-height: $line-height;

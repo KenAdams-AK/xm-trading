@@ -1,0 +1,89 @@
+@import "../../scss/shared";
+
+.register-here {
+  margin-bottom: 4.625rem;
+
+  &__title {
+    @include title(1.5rem, 700, 112%);
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    line-height: 130%;
+    text-align: center;
+    padding: 2.25rem 1.25rem 1.25rem;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__item {
+      width: 16.25rem;
+      height: 6rem;
+      padding-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      text-align: center;
+      gap: 0.75rem;
+
+      &:nth-child(2) {
+        border-block: 1px solid #fff;
+      }
+    }
+
+    .svg-inline--fa {
+      color: #fff;
+      font-size: 1.625rem;
+    }
+
+    &__text {
+      font-weight: 500;
+      line-height: 120%;
+      text-transform: uppercase;
+    }
+  }
+}
+
+@include media-tablet {
+  .register-here {
+    &__title {
+      font-size: 2.125rem;
+    }
+
+    &__subtitle {
+      padding-bottom: 2.5rem;
+    }
+
+    .info {
+      flex-flow: row nowrap;
+
+      &__item {
+        width: 15rem;
+        height: 7.625rem;
+        padding-top: 1.625rem;
+        border-block: 1px solid #fff;
+
+        &:nth-child(2) {
+          width: 11.25rem;
+          border-inline: 1px solid #fff;
+        }
+      }
+    }
+  }
+}
+
+@include media-desktop {
+  .register-here {
+    margin-bottom: 5.125rem;
+
+    &__subtitle {
+      padding-top: 2.5rem;
+      padding-bottom: 3.125rem;
+    }
+  }
+}
