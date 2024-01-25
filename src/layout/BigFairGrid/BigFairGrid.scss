@@ -1,0 +1,52 @@
+@import "../../scss/shared";
+
+.big-fair-grid {
+  @include padding-inline;
+  display: grid;
+  place-items: center;
+  gap: 3rem;
+
+  &__card {
+    display: grid;
+    place-items: center;
+    align-self: start;
+    gap: 1.125rem;
+  }
+
+  &__icon {
+    width: 3.375rem;
+    height: 3.375rem;
+    img {
+      height: 100%;
+    }
+  }
+
+  &__title {
+    @include title(1.25rem, 700, 118%);
+  }
+
+  &__text {
+    @include text(140%);
+    padding-inline: 1rem;
+  }
+}
+
+@include media-tablet {
+  .big-fair-grid {
+    width: 100%;
+    padding-inline: 0;
+    grid-template-columns: repeat(2, 1fr);
+
+    &__card {
+      max-width: 15.375rem;
+      place-items: start;
+      gap: 1.25rem;
+    }
+
+    &__text {
+      width: 90%;
+      padding-inline: 0;
+      text-align: left;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 @import "../../scss/shared";
 
 .hero {
-  @include padpadding-inline;
+  @include padding-inline;
   display: grid;
   place-items: center;
   padding-block: 5.125rem;

@@ -4,7 +4,7 @@ $font-bebas-neue: "Bebas Neue", sans-serif;
 $screen-tablet: 768px;
 $screen-desktop: 1024px;
 
-@mixin padpadding-inline($value-mobile: 0.875rem, $value-tablet: 1.875rem) {
+@mixin padding-inline($value-mobile: 0.875rem, $value-tablet: 1.875rem) {
   padding-inline: $value-mobile;
   @media (min-width: $screen-tablet) {
     padding-inline: $value-tablet;
@@ -22,7 +22,6 @@ $screen-desktop: 1024px;
 @mixin text($line-height: 1.25rem) {
   font-family: $font-roboto;
   text-align: center;
-  font-weight: 400;
   line-height: $line-height;
 }
 

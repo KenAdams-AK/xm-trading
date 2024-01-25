@@ -1,4 +1,5 @@
 import CryptoList from "../../components/CryptoList/CryptoList";
+import BigFair from "../../modules/BigFair/BigFair";
 import EventGallery from "../../modules/EventGallery/EventGallery";
 import Hero from "../../modules/Hero/Hero";
 import RegisterHere from "../../modules/RegisterHere/RegisterHere";
@@ -12,6 +13,7 @@ function HomePage() {
       <WhyTrade />
       <RegisterHere />
       <EventGallery />
+      <BigFair />
     </>
   );
 }

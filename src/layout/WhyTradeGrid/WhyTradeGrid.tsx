@@ -32,7 +32,7 @@ function WhyTradeGrid() {
         return (
           <div key={title} className="why-trade-grid__card">
             <div className="why-trade-grid__head">
-              <div className="why-trade-grid__title">{title}</div>
+              <h4 className="why-trade-grid__title">{title}</h4>
               <div className="why-trade-grid__icon">
                 <img src={icon} alt={title} />
               </div>
