@@ -5,9 +5,9 @@ import Litecoin from "../../assets/icons-crypto/litecoin.svg";
 import BitcoinCash from "../../assets/icons-crypto/bitcoin-cash.svg";
 
 export const ICONS = {
-  bitcoin: Bitcoin,
-  ethereum: Ethereum,
-  ripple: Ripple,
-  litecoin: Litecoin,
-  "bitcoin-cash": BitcoinCash,
+  Bitcoin,
+  Ethereum,
+  Ripple,
+  Litecoin,
+  "Bitcoin-cash": BitcoinCash,
 };
