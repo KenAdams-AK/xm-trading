@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Crypto } from "../models/crypto";
+import { useLocalStorage } from "./useLocalStorage";
 
 export const FETCH_STATUS = {
   IDLE: "IDLE",
@@ -14,11 +15,15 @@ const cryptoIds = [90, 80, 58, 1, 2321];
 type FetchStatus = keyof typeof FETCH_STATUS;
 
 export function useCtypto() {
-  const [crypto, setCrypto] = useState<Crypto[]>([]);
+  const [crypto, setCrypto] = useLocalStorage<Crypto[]>("crypto", []);
   const [status, setStatus] = useState<FetchStatus>(FETCH_STATUS.IDLE);
   const [error, setError] = useState<string>("");
 
   useEffect(() => {
+    if (crypto.length > 0) {
+      return undefined;
+    }
+
     const controller = new AbortController();
     const { signal } = controller;
 
@@ -56,7 +61,7 @@ export function useCtypto() {
     return () => {
       controller.abort();
     };
-  }, []);
+  }, [crypto.length, setCrypto]);
 
   return { crypto, status, error };
 }

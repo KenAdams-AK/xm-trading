@@ -5,7 +5,7 @@ import "./CryptoList.scss";
 function CryptoList() {
   const { crypto, status, error } = useCtypto();
   const isLoading = status === FETCH_STATUS.LOADING;
-  const isSuccess = status === FETCH_STATUS.SUCCESS;
+  const isSuccess = status === FETCH_STATUS.SUCCESS || FETCH_STATUS.IDLE;
   const isError = status === FETCH_STATUS.ERROR;
 
   if (isError)
@@ -35,12 +35,7 @@ function CryptoList() {
             price="2204.33"
             change="-10.36"
           />
-          <CryptoCard
-            name="Ripple"
-            symbol="XRP"
-            price="0.511311"
-            change="-7.19"
-          />
+          <CryptoCard name="XRP" symbol="XRP" price="0.511311" change="-7.19" />
           <CryptoCard
             name="Litecoin"
             symbol="LTC"
