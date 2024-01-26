@@ -2,7 +2,7 @@
 
 .register-here {
   @include padding-inline;
-  margin-bottom: 4.625rem;
+  padding-bottom: 4.625rem;
 
   &__title {
     @include title(1.5rem, 700, 112%);
@@ -80,7 +80,7 @@
 
 @include media-desktop {
   .register-here {
-    margin-bottom: 5.125rem;
+    padding-bottom: 5.125rem;
 
     &__subtitle {
       padding-top: 2.5rem;

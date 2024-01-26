@@ -1,8 +1,9 @@
 @import "../../scss/shared";
 
 .why-trade {
-  @include padding-inline;
+  position: relative;
   padding-block: 4.375rem;
+  @include padding-inline;
 
   &__title {
     @include title(2rem, 300, 2.625rem);
@@ -35,6 +36,38 @@
       font-weight: 700;
     }
   }
+
+  &__bg-img-wrapper {
+    position: absolute;
+    z-index: -1;
+
+    &--number-dark {
+      top: 90px;
+      left: -120px;
+      scale: 1.5;
+    }
+    &--vector {
+      top: -400px;
+      right: 150px;
+      scale: 4;
+    }
+  }
+}
+
+@include media-tablet {
+  .why-trade {
+    &__bg-img-wrapper {
+      &--number-dark {
+        top: 130px;
+        scale: 2;
+      }
+      &--vector {
+        bottom: 500px;
+        right: 250px;
+        scale: 3;
+      }
+    }
+  }
 }
 
 @include media-desktop {
@@ -44,6 +77,18 @@
 
     &__text {
       margin-bottom: 2rem;
+    }
+
+    &__bg-img-wrapper {
+      &--number-dark {
+        top: 280px;
+        scale: 3;
+      }
+      &--vector {
+        bottom: 60px;
+        right: 260px;
+        scale: 3;
+      }
     }
   }
 }

@@ -25,7 +25,7 @@ function CryptoCard({
         <div className="crypto-card__icon">
           <img src={ICONS[name as keyof typeof ICONS]} alt={name} />
         </div>
-        <div className="crypto-card__abbr">{symbol}</div>
+        <div className="crypto-card__symbol">{symbol}</div>
         <div className="crypto-card__name">{name}</div>
       </div>
       <hr />

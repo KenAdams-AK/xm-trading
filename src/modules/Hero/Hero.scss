@@ -1,10 +1,31 @@
 @import "../../scss/shared";
 
 .hero {
+  position: relative;
   @include padding-inline;
-  display: grid;
-  place-items: center;
-  padding-block: 5.125rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(32, 46, 71, 0.65) 36.53%,
+      rgba(32, 46, 71, 0.62) 57.69%,
+      rgba(32, 46, 71, 0.58) 78.84%,
+      rgba(32, 46, 71, 0) 100%
+    );
+    mix-blend-mode: multiply;
+    z-index: -1;
+  }
+
+  &__wrapper {
+    display: grid;
+    place-items: center;
+    margin-inline: auto;
+    padding-block: 5.125rem;
+    max-width: 31.25rem;
+  }
 
   &__title {
     @include title(1.75rem, 400, 2.375rem);
@@ -50,12 +71,29 @@
       color: #d51820;
     }
   }
+
+  &__bg-img-wrapper {
+    position: absolute;
+    z-index: -2; // to be behind the gradient
+
+    &--number-green {
+      top: 0;
+    }
+    &--number-gold {
+      bottom: -90px;
+      right: -90px;
+      scale: 0.7;
+    }
+    &--cube-small {
+      top: 0;
+      right: -50px;
+    }
+  }
 }
 
 @include media-tablet {
   .hero {
-    max-width: 31.25rem;
-    padding-block: 6.25rem;
+    padding-bottom: 1.5625rem;
 
     &__text {
       max-width: 25.25rem;
@@ -64,6 +102,68 @@
     &__title,
     &__terms {
       margin-inline: auto;
+    }
+
+    &__bg-img-wrapper {
+      &--number-green {
+        top: 0;
+        scale: 1.1;
+      }
+      &--number-gold {
+        top: 120px;
+        right: -90px;
+        scale: 1.1;
+      }
+      &--cube-small {
+        top: 375px;
+        right: 40px;
+      }
+      &--cube-big {
+        top: 150px;
+        left: -70px;
+        filter: blur(5px);
+      }
+      &--cup {
+        top: 20px;
+        right: 50px;
+      }
+      &--ring {
+        bottom: 80px;
+        left: 75px;
+      }
+    }
+  }
+}
+
+@include media-desktop {
+  .hero {
+    padding-block: 4.75rem;
+
+    &__bg-img-wrapper {
+      scale: 1.5;
+      &--number-green {
+        top: 20px;
+        left: 140px;
+      }
+      &--number-gold {
+        top: 275px;
+      }
+      &--cube-small {
+        top: 475px;
+        right: 160px;
+      }
+      &--cube-big {
+        top: 250px;
+        left: -60px;
+      }
+      &--cup {
+        top: 50px;
+        right: 130px;
+      }
+      &--ring {
+        bottom: 100px;
+        left: 220px;
+      }
     }
   }
 }

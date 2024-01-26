@@ -1,4 +1,6 @@
+import { bgImages } from "./bg-images";
 import WhyTradeGrid from "../../layout/WhyTradeGrid/WhyTradeGrid";
+
 import "./WhyTrade.scss";
 
 function WhyTrade() {
@@ -18,6 +20,15 @@ function WhyTrade() {
       </p>
 
       <WhyTradeGrid />
+
+      {bgImages.map(({ modifier, src, alt }) => (
+        <div
+          className={`why-trade__bg-img-wrapper why-trade__bg-img-wrapper--${modifier}`}
+          key={src}
+        >
+          <img src={src} alt={alt} loading="lazy" decoding="async" />
+        </div>
+      ))}
     </section>
   );
 }
