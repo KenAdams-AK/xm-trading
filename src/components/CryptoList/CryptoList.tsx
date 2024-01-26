@@ -30,9 +30,9 @@ function CryptoList() {
       {isError && (
         <>
           <CryptoCard />
+          <CryptoCard change="-17.95%" />
           <CryptoCard />
-          <CryptoCard />
-          <CryptoCard />
+          <CryptoCard change="-10.95%" />
           <CryptoCard />
         </>
       )}

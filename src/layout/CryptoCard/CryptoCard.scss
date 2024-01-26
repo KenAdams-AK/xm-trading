@@ -63,6 +63,13 @@
       border-radius: 100%;
       background-color: #b1ffc2;
     }
+
+    &--negative {
+      color: #ff8a8a;
+      .svg-inline--fa {
+        background-color: #ff8a8a;
+      }
+    }
   }
 }
 

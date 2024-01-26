@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { ICONS } from "../../components/CryptoList/icons";
 
 import "./CryptoCard.scss";
@@ -17,6 +17,8 @@ function CryptoCard({
   price = "$87,193.00",
   change = "12.95%",
 }: Partial<Props>) {
+  const isNegative = change.toString().startsWith("-");
+
   return (
     <div className="crypto-card">
       <div className="crypto-card__head">
@@ -28,8 +30,10 @@ function CryptoCard({
       </div>
       <hr />
       <div className="crypto-card__price">{price}</div>
-      <div className="crypto-card__change">
-        <FontAwesomeIcon icon={faChevronUp} />
+      <div
+        className={`crypto-card__change ${isNegative && "crypto-card__change--negative"}`}
+      >
+        <FontAwesomeIcon icon={isNegative ? faChevronDown : faChevronUp} />
         {change}
       </div>
     </div>
