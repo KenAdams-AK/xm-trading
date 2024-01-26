@@ -21,7 +21,7 @@ function CryptoList() {
             key={item.id}
             name={item.name}
             symbol={item.symbol}
-            change={item.percent_change_1h}
+            change={item.percent_change_7d}
             price={item.price_usd}
           />
         ))}

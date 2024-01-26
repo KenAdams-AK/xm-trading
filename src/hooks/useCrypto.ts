@@ -27,12 +27,12 @@ export function useCtypto() {
 
       try {
         const response = await fetch(`${API_URL}?id=${cryptoIds.join(",")}`, {
-          // mode: "no-cors",
           method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "Cache-Control": "public, maxage=3600, stale-if-error=86400",
-          },
+          // mode: "no-cors",
+          // headers: {
+          //   "Content-Type": "application/json",
+          //   "Cache-Control": "public, max-age=3600, stale-if-error=86400",
+          // },
           signal,
         });
 
