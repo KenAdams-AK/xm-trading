@@ -9,5 +9,5 @@ export const ICONS = {
   Ethereum,
   Ripple,
   Litecoin,
-  "Bitcoin-cash": BitcoinCash,
+  "Bitcoin Cash": BitcoinCash,
 };

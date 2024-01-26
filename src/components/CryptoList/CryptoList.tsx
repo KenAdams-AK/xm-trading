@@ -8,14 +8,13 @@ function CryptoList() {
   const isSuccess = status === FETCH_STATUS.SUCCESS;
   const isError = status === FETCH_STATUS.ERROR;
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (isError) console.warn(error);
+  if (isError)
+    console.warn(`Failure to fetch ctypro data with error: ${error}`);
 
   return (
     <section className="crypto-list">
+      {isLoading && <div>Loading...</div>}
+
       {isSuccess &&
         crypto?.map((item) => (
           <CryptoCard
@@ -30,10 +29,30 @@ function CryptoList() {
       {isError && (
         <>
           <CryptoCard />
-          <CryptoCard change="-17.95%" />
-          <CryptoCard />
-          <CryptoCard change="-10.95%" />
-          <CryptoCard />
+          <CryptoCard
+            name="Ethereum"
+            symbol="ETH"
+            price="2204.33"
+            change="-10.36"
+          />
+          <CryptoCard
+            name="Ripple"
+            symbol="XRP"
+            price="0.511311"
+            change="-7.19"
+          />
+          <CryptoCard
+            name="Litecoin"
+            symbol="LTC"
+            price="65.88"
+            change="-4.09"
+          />
+          <CryptoCard
+            name="Bitcoin Cash"
+            symbol="BCH"
+            price="235.45"
+            change="-1.28"
+          />
         </>
       )}
     </section>

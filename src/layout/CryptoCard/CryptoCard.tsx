@@ -14,8 +14,8 @@ type Props = {
 function CryptoCard({
   name = "Bitcoin",
   symbol = "BTN",
-  price = "$87,193.00",
-  change = "12.95%",
+  price = "87,193.00",
+  change = "12.95",
 }: Partial<Props>) {
   const isNegative = change.toString().startsWith("-");
 
@@ -29,12 +29,12 @@ function CryptoCard({
         <div className="crypto-card__name">{name}</div>
       </div>
       <hr />
-      <div className="crypto-card__price">{price}</div>
+      <div className="crypto-card__price">${price}</div>
       <div
         className={`crypto-card__change ${isNegative && "crypto-card__change--negative"}`}
       >
         <FontAwesomeIcon icon={isNegative ? faChevronDown : faChevronUp} />
-        {change}
+        {change}%
       </div>
     </div>
   );
