@@ -7,8 +7,8 @@ import "./CryptoCard.scss";
 type Props = {
   name: string;
   symbol: string;
-  price: number | string;
-  change: number | string;
+  price: string;
+  change: string;
 };
 
 function CryptoCard({
@@ -17,7 +17,7 @@ function CryptoCard({
   price = "87,193.00",
   change = "12.95",
 }: Partial<Props>) {
-  const isNegative = change.toString().startsWith("-");
+  const isNegative = change.startsWith("-");
 
   return (
     <div className="crypto-card">
