@@ -20,6 +20,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 4.625rem;
 
     &__item {
       width: 16.25rem;
@@ -62,6 +63,7 @@
 
     .info {
       flex-flow: row nowrap;
+      margin-bottom: 5.375rem;
 
       &__item {
         width: 15rem;

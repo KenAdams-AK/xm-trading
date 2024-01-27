@@ -23,13 +23,13 @@
     border: 0;
     width: 2.5rem;
     height: 0.25rem;
-    background-color: #d51820;
+    background-color: $clr-red-primary;
   }
 
   &__title {
     @include title(2.1875rem, 900, 138%);
     span {
-      color: #d51820;
+      color: $clr-red-primary;
     }
   }
 

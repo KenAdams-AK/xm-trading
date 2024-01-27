@@ -61,17 +61,6 @@
     }
   }
 
-  &__terms {
-    font-size: 0.75rem;
-    text-align: center;
-    margin-inline: 1.25rem;
-
-    a,
-    span {
-      color: #d51820;
-    }
-  }
-
   &__bg-img-wrapper {
     position: absolute;
     z-index: -2; // to be behind the gradient

@@ -3,28 +3,19 @@ import { ButtonHTMLAttributes } from "react";
 import "./Button.scss";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  onclick: () => void;
+  type: ButtonHTMLAttributes<HTMLButtonElement>["type"];
   className?: string;
-  type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
-  isDisabled?: boolean;
 }
 
 function Button({
   type = "button",
   className = "",
-  isDisabled = false,
-  onclick,
+
   children,
   ...rest
 }: Props) {
   return (
-    <button
-      className={`button ${className}`}
-      type={type}
-      onClick={onclick}
-      disabled={isDisabled}
-      {...rest}
-    >
+    <button type={type} className={`button ${className}`} {...rest}>
       {children}
     </button>
   );

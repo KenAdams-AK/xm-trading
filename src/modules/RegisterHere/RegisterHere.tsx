@@ -4,6 +4,7 @@ import {
   faClock,
   faMapMarkerAlt,
 } from "@fortawesome/free-solid-svg-icons";
+import RegistrationForm from "../RegistrationForm/RegistrationForm";
 
 import "./RegisterHere.scss";
 
@@ -30,6 +31,7 @@ function RegisterHere() {
           </div>
         </div>
       </div>
+      <RegistrationForm />
     </section>
   );
 }

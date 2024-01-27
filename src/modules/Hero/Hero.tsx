@@ -1,6 +1,7 @@
 import { useMediaQuery } from "react-responsive";
 import { bgImagesMobileOnly, bgImages } from "./bg-images";
 import Button from "../../layout/Button/Button";
+import TermsAndConditions from "../../layout/TermsAndConditions/TermsAndConditions";
 
 import "./Hero.scss";
 
@@ -23,18 +24,13 @@ function Hero() {
           <span>EURUSD, USDJPY, EURJPY, GBPUSD,</span> and <span>Gold.</span>
         </p>
 
-        <Button type="button" onclick={() => {}}>
-          open account
-        </Button>
+        <Button type="button">open account</Button>
 
         <div className="hero__demo">
           New to trading? Try a <a href="#!">Demo account.</a>
         </div>
 
-        <div className="hero__terms">
-          Terms and Conditions apply<span>&#42;</span>. To read the full T&Cs,{" "}
-          <a href="#!">click here.</a>
-        </div>
+        <TermsAndConditions />
       </div>
 
       {bgImagesMobileOnly.map(({ modifier, src, alt }) => (

@@ -1,0 +1,12 @@
+@import "../../scss/shared";
+
+.terms-and-conditions {
+  font-size: 0.75rem;
+  text-align: center;
+  margin-inline: 1.25rem;
+
+  a,
+  span {
+    color: $clr-red-primary;
+  }
+}
