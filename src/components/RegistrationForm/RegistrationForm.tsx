@@ -1,17 +1,16 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */ // TODO: remove this line once the component is being used
-import { useState } from "react";
+// import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useMultistepForm } from "../../hooks/useMultiStepForm";
 
 import Button from "../../layout/Button/Button";
-import RegistrationBanner from "../../layout/RegistrationBanner/RegistrationBanner";
+// import RegistrationBanner from "../../layout/RegistrationBanner/RegistrationBanner";
 import UserFieldset from "../UserFieldset/UserFieldset";
 import AccountFieldset from "../AccountFieldset/AccountFieldset";
 import RegistrationFooter from "../../layout/RegistrationFooter/RegistrationFooter";
 
 import "./RegistrationForm.scss";
 
-const steps = [1, 2];
+// const steps = [1, 2];
 
 const errors = {
   name: "Please enter valid name",
@@ -30,48 +29,48 @@ const errors = {
 };
 
 function RegistrationForm() {
-  const [currentStep, setCurrentStep] = useState(1);
-  const [isSuccess, setIsSuccess] = useState(false);
+  // const [currentStep, setCurrentStep] = useState(1);
+  // const [isSuccess, setIsSuccess] = useState(false);
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
   const { isFirstStep } = useMultistepForm([
     <UserFieldset />,
     <AccountFieldset />,
   ]);
 
-  if (isSuccess) {
-    return (
-      <div className="registration-form">
-        <RegistrationBanner />
-        <RegistrationFooter />
-      </div>
-    );
-  }
+  // if (isSuccess) {
+  //   return (
+  //     <div className="registration-form">
+  //       <RegistrationBanner />
+  //       <RegistrationFooter />
+  //     </div>
+  //   );
+  // }
+
+  // steps.map((step) => {
+  //   const isActive = step === currentStep;
+  //   const isCompleted = step < currentStep;
+  //   const isSecondStep = step === 2;
+
+  //   return (
+  //     <div
+  //       key={step}
+  //       className={`progress__step ${isSecondStep && isMobile ? "hidden" : ""}
+  //                                 ${isActive ? "active" : ""}
+  //                                 ${isCompleted ? "completed" : ""}`}
+  //     >
+  //       <span>{step}</span> Step
+  //       <div className="progress__bar">
+  //         <div className="progress__bar--fill" />
+  //       </div>
+  //     </div>
+  //   );
+  // });
 
   return (
     <div className="registration-form">
       <div className="registration-form__progress progress">
-        {steps.map((step) => {
-          const isActive = step === currentStep;
-          const isCompleted = step < currentStep;
-          const isSecondStep = step === 2;
-
-          return (
-            <div
-              key={step}
-              className={`progress__step ${isSecondStep && isMobile ? "hidden" : ""}
-                                        ${isActive ? "active" : ""}
-                                        ${isCompleted ? "completed" : ""}`}
-            >
-              <span>{step}</span> Step
-              <div className="progress__bar">
-                <div className="progress__bar--fill" />
-              </div>
-            </div>
-          );
-        })}
-
-        {/* <div className="progress__step">
-          <span className="active">1</span> Step
+        <div className="progress__step progress__step--active">
+          <span>1</span> Step
           <div className="progress__bar">
             <div className="progress__bar--fill" />
           </div>
@@ -83,7 +82,7 @@ function RegistrationForm() {
               <div className="progress__bar--fill" />
             </div>
           </div>
-        )} */}
+        )}
       </div>
 
       <form className="registration-form__form form">

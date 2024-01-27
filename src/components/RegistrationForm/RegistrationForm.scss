@@ -29,19 +29,19 @@
         border-radius: 100%;
         outline: 2px solid #ccc;
       }
-    }
 
-    &__step.hidden {
-      display: none;
-    }
-
-    &__step.active {
-      span {
-        color: #fff;
-        background-color: $clr-green-primary;
-        outline-color: $clr-green-primary;
+      &--active {
+        span {
+          color: #fff;
+          background-color: $clr-green-primary;
+          outline-color: $clr-green-primary;
+        }
       }
     }
+
+    // &__step.hidden {
+    //   display: none;
+    // }
 
     &__bar {
       width: 100%;
