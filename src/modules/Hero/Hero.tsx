@@ -38,7 +38,7 @@ function Hero() {
           className={`hero__bg-img-wrapper hero__bg-img-wrapper--${modifier}`}
           key={src}
         >
-          <img src={src} alt={alt} loading="lazy" decoding="async" />
+          <img src={src} alt={alt} loading="lazy" />
         </div>
       ))}
 
