@@ -26,7 +26,7 @@ function WhyTrade() {
           className={`why-trade__bg-img-wrapper why-trade__bg-img-wrapper--${modifier}`}
           key={src}
         >
-          <img src={src} alt={alt} loading="lazy" />
+          <img src={src} alt={alt} />
         </div>
       ))}
     </section>
