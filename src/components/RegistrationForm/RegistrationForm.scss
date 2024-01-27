@@ -29,7 +29,14 @@
         border-radius: 100%;
         outline: 2px solid #ccc;
       }
-      span.active {
+    }
+
+    &__step.hidden {
+      display: none;
+    }
+
+    &__step.active {
+      span {
         color: #fff;
         background-color: $clr-green-primary;
         outline-color: $clr-green-primary;
@@ -65,6 +72,7 @@
 
       label {
         display: grid;
+        align-content: start;
         gap: 0.625rem;
 
         input {
@@ -75,27 +83,47 @@
             outline-color: $clr-green-primary;
           }
         }
-
+        // fix placeholder color
         input[type="date"]:invalid::-webkit-datetime-edit {
-          // fix placeholder color
           color: #999;
+        }
+        input:focus.invalid {
+          outline-color: $clr-red-primary;
+        }
+      }
+    }
+
+    &__errors-list {
+      display: grid;
+      color: #959595;
+      font-size: 12px;
+    }
+
+    &__error {
+      span {
+        display: inline-block;
+        width: 0.625rem;
+        height: 0.625rem;
+        border-radius: 100%;
+        border: 3.5px solid #959595;
+        margin-right: 0.625rem;
+      }
+      &--valid {
+        color: $clr-green-primary;
+        span {
+          border-color: $clr-green-primary;
+        }
+      }
+      &--invalid {
+        color: $clr-red-primary;
+        span {
+          border-color: $clr-red-primary;
         }
       }
     }
 
     &__button {
       width: 100%;
-    }
-  }
-
-  &__footer {
-    text-align: center;
-    a {
-      color: $clr-red-primary;
-      text-decoration: underline;
-    }
-    div:last-child {
-      margin-top: 1.5rem;
     }
   }
 }

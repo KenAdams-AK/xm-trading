@@ -1,0 +1,12 @@
+@import "../../scss/shared";
+
+.registration-footer {
+  text-align: center;
+  a {
+    color: $clr-red-primary;
+    text-decoration: underline;
+  }
+  div:last-child {
+    margin-top: 1.5rem;
+  }
+}
