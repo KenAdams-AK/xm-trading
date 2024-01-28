@@ -1,70 +1,64 @@
-// import { useState } from "react";
+import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import { useMultistepForm } from "../../hooks/useMultiStepForm";
+
+import { SubmitHandler, useForm } from "react-hook-form";
+import { DevTool } from "@hookform/devtools";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FORM_ERRORS, FormFields, schema } from "./formSchema";
 
 import Button from "../../layout/Button/Button";
-// import RegistrationBanner from "../../layout/RegistrationBanner/RegistrationBanner";
-import UserFieldset from "../UserFieldset/UserFieldset";
-import AccountFieldset from "../AccountFieldset/AccountFieldset";
+import RegistrationBanner from "../../layout/RegistrationBanner/RegistrationBanner";
 import RegistrationFooter from "../../layout/RegistrationFooter/RegistrationFooter";
 
 import "./RegistrationForm.scss";
 
-// const steps = [1, 2];
-
-const errors = {
-  name: "Please enter valid name",
-  date: {
-    maxAge: "Maximum age requirements, 60 years old",
-    minAge: "Minimum age requirements, 18 years old",
-  },
-  email: "Please enter valid email",
-  password: {
-    length: " 8 - 15 characters",
-    numbers: " 1 or more numbers",
-    lowerCase: " 1 or more lower case letters",
-    upperCase: "1 or more upper case letters",
-    specialCharacters: "1 or more special characters  (#[]()@$&*!?|,.^/+_-)",
-  },
-};
-
 function RegistrationForm() {
-  // const [currentStep, setCurrentStep] = useState(1);
-  // const [isSuccess, setIsSuccess] = useState(false);
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
-  const { isFirstStep } = useMultistepForm([
-    <UserFieldset />,
-    <AccountFieldset />,
-  ]);
+  const [currentStep, setCurrentStep] = useState(1);
+  const isFirstStep = currentStep === 1;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting, isValid, isSubmitSuccessful },
+    setError,
+    getFieldState,
+    control,
+  } = useForm<FormFields>({
+    mode: "all",
+    reValidateMode: "onChange",
+    resolver: zodResolver(schema),
+  });
+  const fullNameState = getFieldState("fullName");
+  const birthDateState = getFieldState("birthDate");
+  const isContinueButtonDisabled =
+    !(fullNameState.error?.message === undefined && fullNameState.isDirty) ||
+    !(birthDateState.error?.message === undefined && birthDateState.isDirty);
 
-  // if (isSuccess) {
-  //   return (
-  //     <div className="registration-form">
-  //       <RegistrationBanner />
-  //       <RegistrationFooter />
-  //     </div>
-  //   );
-  // }
+  const handleClick = () => {
+    setCurrentStep(2);
+  };
 
-  // steps.map((step) => {
-  //   const isActive = step === currentStep;
-  //   const isCompleted = step < currentStep;
-  //   const isSecondStep = step === 2;
+  const onSubmit: SubmitHandler<FormFields> = async (data) => {
+    try {
+      await new Promise((resolve) => {
+        setTimeout(resolve, 2000);
+      });
+      console.log({ data });
+    } catch (error) {
+      setError("root", {
+        message: FORM_ERRORS.root,
+      });
+    }
+  };
 
-  //   return (
-  //     <div
-  //       key={step}
-  //       className={`progress__step ${isSecondStep && isMobile ? "hidden" : ""}
-  //                                 ${isActive ? "active" : ""}
-  //                                 ${isCompleted ? "completed" : ""}`}
-  //     >
-  //       <span>{step}</span> Step
-  //       <div className="progress__bar">
-  //         <div className="progress__bar--fill" />
-  //       </div>
-  //     </div>
-  //   );
-  // });
+  if (isSubmitSuccessful) {
+    return (
+      <div className="registration-form">
+        <RegistrationBanner />
+        <RegistrationFooter />
+      </div>
+    );
+  }
 
   return (
     <div className="registration-form">
@@ -85,64 +79,134 @@ function RegistrationForm() {
         )}
       </div>
 
-      <form className="registration-form__form form">
+      <form
+        className="registration-form__form form"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <fieldset className="form__fieldset">
-          <label htmlFor="username" style={{ display: "none" }}>
-            Full Name
-            <input type="text" id="username" placeholder="Full Name" />
-            {/* <div className="form__error">{errors.name}</div> */}
-          </label>
-          <label htmlFor="date-of-birth" style={{ display: "none" }}>
-            Date of Birth
-            <input
-              type="date"
-              id="date-of-birth"
-              placeholder="dd/mm/yy"
-              required // should be "required" in order to fix placeholder color issue
-            />
-          </label>
-
           {isFirstStep && (
+            <>
+              <label htmlFor="fullName">
+                Full Name
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  aria-invalid={errors.fullName ? "true" : "false"}
+                  {...register("fullName")}
+                />
+                {errors.fullName && (
+                  <span
+                    role="alert"
+                    className="form__error form__error--invalid"
+                  >
+                    <span />
+                    {errors.fullName.message}
+                  </span>
+                )}
+              </label>
+
+              <label htmlFor="birthDate">
+                Date of Birth
+                <input
+                  type="date"
+                  placeholder="dd/mm/yy"
+                  required // should be "required" to fix placeholder color
+                  aria-invalid={errors.birthDate ? "true" : "false"}
+                  {...register("birthDate")}
+                />
+                {errors.birthDate && (
+                  <span
+                    role="alert"
+                    className="form__error form__error--invalid"
+                  >
+                    <span />
+                    {errors.birthDate.message}
+                  </span>
+                )}
+              </label>
+            </>
+          )}
+
+          {!isFirstStep && (
             <>
               <label htmlFor="email">
                 Email
-                <input type="email" id="email" placeholder="email@email.com" />
+                <input
+                  type="email"
+                  placeholder="email@email.com"
+                  aria-invalid={errors.email ? "true" : "false"}
+                  {...register("email")}
+                />
+                {errors.email && (
+                  <span
+                    role="alert"
+                    className="form__error form__error--invalid"
+                  >
+                    <span />
+                    {errors.email.message}
+                  </span>
+                )}
               </label>
+
               <label htmlFor="password">
                 Password
                 <input
                   className="invalid"
                   type="password"
-                  id="password"
                   placeholder="password"
+                  aria-invalid={errors.password ? "true" : "false"}
+                  {...register("password")}
                 />
-                <ul className="form__errors-list">
-                  <li className="form__error form__error--default">
-                    <span />
-                    {errors.password.length}
-                  </li>
-                  <li className="form__error form__error--valid">
-                    <span />
-                    {errors.password.numbers}
-                  </li>
-                  <li className="form__error form__error--invalid">
-                    <span />
-                    {errors.password.lowerCase}
-                  </li>
-                </ul>
+                {errors.password?.message && (
+                  <ul className="form__errors-check-list">
+                    {Object.keys(errors.password.message).map((errType) => {
+                      if (errors.password?.message === undefined) {
+                        return null;
+                      }
+
+                      const { status, message } =
+                        // @ts-expect-error:next-line, it sees message as a string, however in this case this is an object which is specified in the "superRefine" function
+                        errors.password.message[errType];
+
+                      return (
+                        <li
+                          key={errType}
+                          role="alert"
+                          className={`form__error form__error--${status}`}
+                        >
+                          <span />
+                          {message}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
               </label>
             </>
           )}
         </fieldset>
+        {errors.root && (
+          <div className="form__error form__error--invalid">
+            {errors.root.message}
+          </div>
+        )}
 
-        <Button
-          className="form__button"
-          type={isFirstStep ? "button" : "submit"}
-          disabled={isFirstStep}
-        >
-          {isFirstStep ? "Continue" : "Register now"}
-        </Button>
+        {isFirstStep ? (
+          <Button
+            className="form__button"
+            type="button"
+            onClick={handleClick}
+            disabled={isContinueButtonDisabled}
+          >
+            Continue
+          </Button>
+        ) : (
+          <Button className="form__button" type="submit" disabled={!isValid}>
+            {isSubmitting ? "Loading..." : "Register now"}
+          </Button>
+        )}
       </form>
+      <DevTool control={control} />
 
       <RegistrationFooter />
     </div>
