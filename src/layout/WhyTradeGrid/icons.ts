@@ -8,4 +8,4 @@ export const ICONS = {
   dollar: Dollar,
   "fast-execusion": FastExecution,
   tech: Tech,
-};
+} as const;

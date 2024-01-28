@@ -1,8 +1,8 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import Footer from "./modules/Footer/Footer";
 import Header from "./modules/Header/Header";
-import HomePage from "./pages/Home/HomePage";
-import SupportPage from "./pages/Support/SupportPage";
+import HomePage from "./pages/HomePage";
+import SupportPage from "./pages/SupportPage";
 
 function App() {
   return (

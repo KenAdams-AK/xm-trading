@@ -23,7 +23,7 @@ const cardsData = [
     text: "Start trading your preferred instruments with as little as a $5 minimum deposit.",
     icon: ICONS.dollar,
   },
-];
+] as const;
 
 function WhyTradeGrid() {
   return (

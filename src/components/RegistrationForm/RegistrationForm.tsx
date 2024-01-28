@@ -9,6 +9,8 @@ import { FORM_ERRORS, FormFields, schema } from "./formSchema";
 import Button from "../../layout/Button/Button";
 import RegistrationBanner from "../../layout/RegistrationBanner/RegistrationBanner";
 import RegistrationFooter from "../../layout/RegistrationFooter/RegistrationFooter";
+import ProgressBar from "../../layout/ProgressBar/ProgressBar";
+import ValidationError from "../../layout/ValidationError/ValidationError";
 
 import "./RegistrationForm.scss";
 
@@ -62,52 +64,33 @@ function RegistrationForm() {
 
   return (
     <div className="registration-form">
-      <div className="registration-form__progress progress">
-        <div className="progress__step progress__step--active">
-          <span>1</span> Step
-          <div className="progress__bar">
-            <div className="progress__bar--fill" />
-          </div>
-        </div>
-        {!isMobile && (
-          <div className="progress__step">
-            <span>2</span> Step
-            <div className="progress__bar">
-              <div className="progress__bar--fill" />
-            </div>
-          </div>
-        )}
-      </div>
+      <ProgressBar isFirstStep={isFirstStep} isMobile={isMobile} />
 
       <form
         className="registration-form__form form"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <fieldset className="form__fieldset">
-          {isFirstStep && (
-            <>
+        {isFirstStep && (
+          <>
+            <fieldset className="form__fieldset">
               <label htmlFor="fullName">
                 Full Name
                 <input
+                  className={errors.fullName ? "invalid" : ""}
                   type="text"
                   placeholder="Full Name"
                   aria-invalid={errors.fullName ? "true" : "false"}
                   {...register("fullName")}
                 />
                 {errors.fullName && (
-                  <span
-                    role="alert"
-                    className="form__error form__error--invalid"
-                  >
-                    <span />
-                    {errors.fullName.message}
-                  </span>
+                  <ValidationError error={errors.fullName.message ?? ""} />
                 )}
               </label>
 
               <label htmlFor="birthDate">
                 Date of Birth
                 <input
+                  className={errors.birthDate ? "invalid" : ""}
                   type="date"
                   placeholder="dd/mm/yy"
                   required // should be "required" to fix placeholder color
@@ -115,43 +98,42 @@ function RegistrationForm() {
                   {...register("birthDate")}
                 />
                 {errors.birthDate && (
-                  <span
-                    role="alert"
-                    className="form__error form__error--invalid"
-                  >
-                    <span />
-                    {errors.birthDate.message}
-                  </span>
+                  <ValidationError error={errors.birthDate.message ?? ""} />
                 )}
               </label>
-            </>
-          )}
+            </fieldset>
+            <Button
+              className="form__button"
+              type="button"
+              onClick={handleClick}
+              disabled={isContinueButtonDisabled}
+            >
+              Continue
+            </Button>
+          </>
+        )}
 
-          {!isFirstStep && (
-            <>
+        {!isFirstStep && (
+          <>
+            <fieldset className="form__fieldset">
               <label htmlFor="email">
                 Email
                 <input
+                  className={errors.email ? "invalid" : ""}
                   type="email"
                   placeholder="email@email.com"
                   aria-invalid={errors.email ? "true" : "false"}
                   {...register("email")}
                 />
                 {errors.email && (
-                  <span
-                    role="alert"
-                    className="form__error form__error--invalid"
-                  >
-                    <span />
-                    {errors.email.message}
-                  </span>
+                  <ValidationError error={errors.email.message ?? ""} />
                 )}
               </label>
 
               <label htmlFor="password">
                 Password
                 <input
-                  className="invalid"
+                  className={errors.password ? "invalid" : ""}
                   type="password"
                   placeholder="password"
                   aria-invalid={errors.password ? "true" : "false"}
@@ -160,51 +142,30 @@ function RegistrationForm() {
                 {errors.password?.message && (
                   <ul className="form__errors-check-list">
                     {Object.keys(errors.password.message).map((errType) => {
-                      if (errors.password?.message === undefined) {
-                        return null;
-                      }
-
+                      if (errors.password?.message === undefined) return null;
                       const { status, message } =
-                        // @ts-expect-error:next-line, it sees message as a string, however in this case this is an object which is specified in the "superRefine" function
+                        // ts sees "message" as a string, however in this case it is an object which is set in the "superRefine" function
+                        // @ts-expect-error:next-line
                         errors.password.message[errType];
-
                       return (
-                        <li
+                        <ValidationError
                           key={errType}
-                          role="alert"
-                          className={`form__error form__error--${status}`}
-                        >
-                          <span />
-                          {message}
-                        </li>
+                          error={message}
+                          modifier={status}
+                          isListItems
+                        />
                       );
                     })}
                   </ul>
                 )}
               </label>
-            </>
-          )}
-        </fieldset>
-        {errors.root && (
-          <div className="form__error form__error--invalid">
-            {errors.root.message}
-          </div>
+            </fieldset>
+            <Button className="form__button" type="submit" disabled={!isValid}>
+              {isSubmitting ? "Loading..." : "Register now"}
+            </Button>
+          </>
         )}
-
-        {isFirstStep ? (
-          <Button
-            className="form__button"
-            type="button"
-            onClick={handleClick}
-            disabled={isContinueButtonDisabled}
-          >
-            Continue
-          </Button>
-        ) : (
-          <Button className="form__button" type="submit" disabled={!isValid}>
-            {isSubmitting ? "Loading..." : "Register now"}
-          </Button>
-        )}
+        {errors.root && <ValidationError error={errors.root.message ?? ""} />}
       </form>
       <DevTool control={control} />
 

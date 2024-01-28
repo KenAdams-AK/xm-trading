@@ -8,6 +8,6 @@ const ICONS = {
   verisign: Verisign,
   unicef: Unicef,
   "investors-in-people": InvestorsInvestors,
-};
+} as const;
 
 export default Object.entries(ICONS);

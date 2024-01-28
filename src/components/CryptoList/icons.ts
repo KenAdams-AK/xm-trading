@@ -10,4 +10,4 @@ export const ICONS = {
   XRP,
   Litecoin,
   "Bitcoin Cash": BitcoinCash,
-};
+} as const;

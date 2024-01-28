@@ -8,4 +8,4 @@ export const ICONS = {
   authorised: Authorised,
   award: Award,
   support: Support,
-};
+} as const;
