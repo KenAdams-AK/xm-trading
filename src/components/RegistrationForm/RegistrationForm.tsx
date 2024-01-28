@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { useMediaQuery } from "react-responsive";
 
 import { SubmitHandler, useForm } from "react-hook-form";
-import { DevTool } from "@hookform/devtools";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FORM_ERRORS, FormFields, schema } from "./formSchema";
 
@@ -15,8 +13,8 @@ import ValidationError from "../../layout/ValidationError/ValidationError";
 import "./RegistrationForm.scss";
 
 function RegistrationForm() {
-  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState<1 | 2>(1);
+  const [isFirstStepComplete, setIsFirstStepComplete] = useState(false);
   const isFirstStep = currentStep === 1;
   const {
     register,
@@ -24,7 +22,7 @@ function RegistrationForm() {
     formState: { errors, isSubmitting, isValid, isSubmitSuccessful },
     setError,
     getFieldState,
-    control,
+    // control,
   } = useForm<FormFields>({
     mode: "all",
     reValidateMode: "onChange",
@@ -32,12 +30,20 @@ function RegistrationForm() {
   });
   const fullNameState = getFieldState("fullName");
   const birthDateState = getFieldState("birthDate");
-  const isContinueButtonDisabled =
-    !(fullNameState.error?.message === undefined && fullNameState.isDirty) ||
-    !(birthDateState.error?.message === undefined && birthDateState.isDirty);
+  const isFirstStepValid =
+    fullNameState.error?.message === undefined &&
+    fullNameState.isDirty &&
+    birthDateState.error?.message === undefined &&
+    birthDateState.isDirty;
 
   const handleClick = () => {
-    setCurrentStep(2);
+    setIsFirstStepComplete(true);
+
+    const timerId = setTimeout(() => {
+      setCurrentStep(2);
+    }, 550); // transition duration
+
+    return () => clearTimeout(timerId);
   };
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
@@ -45,7 +51,7 @@ function RegistrationForm() {
       await new Promise((resolve) => {
         setTimeout(resolve, 2000);
       });
-      console.log({ data });
+      console.log("Registration data has been sent: ", { data });
     } catch (error) {
       setError("root", {
         message: FORM_ERRORS.root,
@@ -64,8 +70,13 @@ function RegistrationForm() {
 
   return (
     <div className="registration-form">
-      <ProgressBar isFirstStep={isFirstStep} isMobile={isMobile} />
-
+      <ProgressBar
+        currentStep={currentStep}
+        isFirstStepValid={isFirstStepValid}
+        isFirstStepComplete={isFirstStepComplete}
+        isFormValid={isValid}
+        isSubmitting={isSubmitting}
+      />
       <form
         className="registration-form__form form"
         onSubmit={handleSubmit(onSubmit)}
@@ -106,7 +117,7 @@ function RegistrationForm() {
               className="form__button"
               type="button"
               onClick={handleClick}
-              disabled={isContinueButtonDisabled}
+              disabled={!isFirstStepValid}
             >
               Continue
             </Button>
@@ -161,14 +172,14 @@ function RegistrationForm() {
               </label>
             </fieldset>
             <Button className="form__button" type="submit" disabled={!isValid}>
-              {isSubmitting ? "Loading..." : "Register now"}
+              {isSubmitting ? "Sending..." : "Register now"}
             </Button>
           </>
         )}
         {errors.root && <ValidationError error={errors.root.message ?? ""} />}
       </form>
-      <DevTool control={control} />
-
+      {/* uncomment to see the form's devtool in the browser */}
+      {/* <DevTool control={control} />  */}
       <RegistrationFooter />
     </div>
   );
