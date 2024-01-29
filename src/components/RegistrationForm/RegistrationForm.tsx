@@ -171,7 +171,11 @@ function RegistrationForm() {
                 )}
               </label>
             </fieldset>
-            <Button className="form__button" type="submit" disabled={!isValid}>
+            <Button
+              className="form__button"
+              type="submit"
+              disabled={!isValid || isSubmitting}
+            >
               {isSubmitting ? "Sending..." : "Register now"}
             </Button>
           </>
