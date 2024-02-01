@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -36,14 +36,14 @@ function RegistrationForm() {
     birthDateState.error?.message === undefined &&
     birthDateState.isDirty;
 
+  const timerId = useRef<ReturnType<typeof setTimeout>>();
+
   const handleClick = () => {
     setIsFirstStepComplete(true);
 
-    const timerId = setTimeout(() => {
+    timerId.current = setTimeout(() => {
       setCurrentStep(2);
     }, 550); // transition duration
-
-    return () => clearTimeout(timerId);
   };
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
@@ -58,6 +58,12 @@ function RegistrationForm() {
       });
     }
   };
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(timerId.current);
+    };
+  }, []);
 
   if (isSubmitSuccessful) {
     return (
