@@ -1,4 +1,5 @@
 import BigFairGrid from "../../layout/BigFairGrid/BigFairGrid";
+
 import "./BigFair.scss";
 
 function BigFair() {

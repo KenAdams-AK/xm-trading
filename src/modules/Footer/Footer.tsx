@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
+
+import TradeIcon from "../../assets/icons-footer/trading-point.png";
 import BrandIcons from "../../layout/BrandIcons/BrandIcons";
 import SocialIcons from "../../layout/SocialIcons/SocialIcons";
-import TradeIcon from "../../assets/icons-footer/trading-point.png";
 
 import "./Footer.scss";
 

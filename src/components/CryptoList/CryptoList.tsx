@@ -1,5 +1,6 @@
 import { FETCH_STATUS, useCtypto } from "../../hooks/useCrypto";
 import CryptoCard from "../../layout/CryptoCard/CryptoCard";
+
 import "./CryptoList.scss";
 
 function CryptoList() {

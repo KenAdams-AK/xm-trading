@@ -1,5 +1,6 @@
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+
 import { ICONS } from "../../components/CryptoList/icons";
 
 import "./CryptoCard.scss";

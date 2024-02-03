@@ -1,5 +1,6 @@
+import { faCaretRight, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle, faCaretRight } from "@fortawesome/free-solid-svg-icons";
+
 import "./RegistrationBanner.scss";
 
 function RegistrationBanner() {

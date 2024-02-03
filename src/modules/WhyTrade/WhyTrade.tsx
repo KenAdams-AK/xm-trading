@@ -1,5 +1,5 @@
-import { bgImages } from "./bg-images";
 import WhyTradeGrid from "../../layout/WhyTradeGrid/WhyTradeGrid";
+import { bgImages } from "./bg-images";
 
 import "./WhyTrade.scss";
 

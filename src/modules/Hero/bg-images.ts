@@ -1,9 +1,8 @@
-import NumberGreen from "../../assets/bg-imgs/number-green.png";
-import NumberGold from "../../assets/bg-imgs/number-gold.png";
-import CubeSmall from "../../assets/bg-imgs/cube-small.png";
-
-import Cup from "../../assets/bg-imgs/cup.png";
 import CubeBig from "../../assets/bg-imgs/cube-big.png";
+import CubeSmall from "../../assets/bg-imgs/cube-small.png";
+import Cup from "../../assets/bg-imgs/cup.png";
+import NumberGold from "../../assets/bg-imgs/number-gold.png";
+import NumberGreen from "../../assets/bg-imgs/number-green.png";
 import Ring from "../../assets/bg-imgs/ring.png";
 
 export const bgImagesMobileOnly = [

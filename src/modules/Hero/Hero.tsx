@@ -1,7 +1,8 @@
 import { useMediaQuery } from "react-responsive";
-import { bgImagesMobileOnly, bgImages } from "./bg-images";
+
 import Button from "../../layout/Button/Button";
 import TermsAndConditions from "../../layout/TermsAndConditions/TermsAndConditions";
+import { bgImages, bgImagesMobileOnly } from "./bg-images";
 
 import "./Hero.scss";
 

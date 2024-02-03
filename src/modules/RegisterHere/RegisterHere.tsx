@@ -1,9 +1,10 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCalendarCheck,
   faClock,
   faMapMarkerAlt,
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
 
 import "./RegisterHere.scss";
