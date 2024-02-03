@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import { Crypto } from "../models/crypto";
 import { useLocalStorage } from "./useLocalStorage";
 
@@ -40,6 +41,10 @@ export function useCtypto() {
           // },
           signal,
         });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
 
         const data: Crypto[] = await response.json();
         setCrypto(data);

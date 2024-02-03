@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-
 import { SubmitHandler, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { FORM_ERRORS, FormFields, schema } from "./formSchema";
 
-import Button from "../../layout/Button/Button";
-import RegistrationBanner from "../../layout/RegistrationBanner/RegistrationBanner";
-import RegistrationFooter from "../../layout/RegistrationFooter/RegistrationFooter";
-import ProgressBar from "../../layout/ProgressBar/ProgressBar";
-import ValidationError from "../../layout/ValidationError/ValidationError";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import Button from "@/layout/Button/Button";
+import ProgressBar from "@/layout/ProgressBar/ProgressBar";
+import RegistrationBanner from "@/layout/RegistrationBanner/RegistrationBanner";
+import RegistrationFooter from "@/layout/RegistrationFooter/RegistrationFooter";
+import ValidationError from "@/layout/ValidationError/ValidationError";
+
+import { FORM_ERRORS, FormFields, schema } from "./formSchema";
 
 import "./RegistrationForm.scss";
 

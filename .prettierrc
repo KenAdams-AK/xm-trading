@@ -1,9 +1,29 @@
 {
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+
   "tabWidth": 2,
   "useTabs": false,
   "semi": true,
   "singleQuote": false,
   "trailingComma": "all",
   "printWidth": 80,
-  "endOfLine": "crlf"
+  "endOfLine": "crlf",
+
+  "importOrder": [
+    "^react",
+    "^react-dom",
+    "^react-dom-router",
+    "^react-redux",
+    "^@reduxjs/toolkit",
+    "<THIRD_PARTY_MODULES>",
+    "^@/hooks/(.*)$",
+    "^@/components/(.*)$",
+    "^@/layout/(.*)$",
+    "^@/assets/(.*)$",
+    "^(?!.*\\.scss$)[./]",
+    "^[../]",
+    "^\\./(.*\\.scss)$"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }
