@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -39,13 +39,13 @@ function RegistrationForm() {
 
   const timerId = useRef<ReturnType<typeof setTimeout>>();
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     setIsFirstStepComplete(true);
 
     timerId.current = setTimeout(() => {
       setCurrentStep(2);
     }, 550); // transition duration
-  };
+  }, []);
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {

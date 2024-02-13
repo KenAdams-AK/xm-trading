@@ -25,11 +25,9 @@ function Footer() {
             <li className="navbar__item">
               <Link to="/privacy-policy">Privacy Policy</Link>
             </li>
-            &#124;
             <li className="navbar__item">
               <Link to="/cookie-policy">Cookie Policy</Link>
             </li>
-            &#124;
             <li className="navbar__item">
               <Link to="/terms-and-conditions">Terms and Conditions</Link>
             </li>

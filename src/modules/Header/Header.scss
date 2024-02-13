@@ -21,18 +21,18 @@
   .header {
     justify-content: space-between;
     padding-block: 2rem;
-  }
 
-  .navbar {
-    display: block;
+    .navbar {
+      display: block;
 
-    &__list {
-      display: flex;
-      gap: 2.5rem;
-    }
+      &__list {
+        display: flex;
+        gap: 2.5rem;
+      }
 
-    .active {
-      color: $clr-red-primary;
+      .active {
+        color: $clr-red-primary;
+      }
     }
   }
 }
